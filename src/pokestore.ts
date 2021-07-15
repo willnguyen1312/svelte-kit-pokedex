@@ -4,7 +4,7 @@ export const pokemon = writable([]);
 const pokemonDetails = {};
 let loaded = false;
 
-export const fetchPokemon = async () => {
+export const fetchPokemon = async (): Promise<void> => {
 	if (loaded) return;
 	const url = `https://pokeapi.co/api/v2/pokemon?limit=150`;
 	const res = await fetch(url);
@@ -20,7 +20,7 @@ export const fetchPokemon = async () => {
 	loaded = true;
 };
 
-export const getPokemonById = async (id) => {
+export const getPokemonById = async (id: string): Promise<void | any> => {
 	if (pokemonDetails[id]) return pokemonDetails[id];
 
 	try {
